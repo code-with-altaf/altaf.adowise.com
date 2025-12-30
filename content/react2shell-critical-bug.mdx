@@ -1,0 +1,41 @@
+---
+title: "React2Shell: A Critical Bug in React Server Components"
+publishedAt: "2025-12-20"
+summary: "A real security flaw in React that allowed remote code execution if not patched quickly."
+---
+
+Recently, a major security issue was disclosed in React Server Components, known as **React2Shell** (CVE-2025-55182).  
+This bug was given the highest possible severity rating because it allowed remote code execution on servers without any authentication. :contentReference[oaicite:3]{index=3}
+
+The bug affected the way server payloads were deserialized in React’s Server Components "Flight" protocol. The flaw meant that a crafted HTTP request could cause the server to run arbitrary, attacker-controlled code. :contentReference[oaicite:4]{index=4}
+
+---
+
+## Why This Bug Was Dangerous
+
+The vulnerability was especially concerning because:
+- It required **no login or credentials** to be exploited.  
+- It could be triggered on standard React/Next.js setups using Server Components.  
+- It affected a wide range of app ecosystems that rely on React Server Components. :contentReference[oaicite:5]{index=5}
+
+Shortly after the public disclosure, threat intelligence teams observed active scanning and exploitation attempts for this vulnerability. :contentReference[oaicite:6]{index=6}
+
+---
+
+## How the Community Responded
+
+The React team and framework maintainers released patched versions within days of the disclosure.  
+Developers were strongly advised to upgrade to the fixed releases immediately to prevent attackers from exploiting the issue. :contentReference[oaicite:7]{index=7}
+
+React Server Components remain a powerful feature, but this incident reminded the community that **complex server-side features carry risk** if not maintained and audited carefully.
+
+---
+
+## What I Learned from This
+
+Writing real production apps taught me that:
+- Keeping dependencies updated is **not optional**.
+- Major libraries can still have **critical bugs**.
+- Security fixes matter as much as feature updates.
+
+This React2Shell bug was a reminder that even widely-trusted tools like React can have serious issues — and developers must stay alert.
