@@ -43,38 +43,45 @@ export const DATA = {
   contact: {
     email: "reachmohdaltaf@gmail.com",
     tel: "+91 7876637551",
-    social: {
-      GitHub: {
-        name: "GitHub",
-        url: "https://github.com/code-with-altaf",
-        icon: Icons.github,
-        navbar: true,
-      },
-      LinkedIn: {
-        name: "LinkedIn",
-        url: "https://linkedin.com/in/reachmohdaltaf",
-        icon: Icons.linkedin,
-        navbar: true,
-      },
-      X: {
-        name: "X",
-        url: "https://x.com/reachmohdaltaf",
-        icon: Icons.x,
-        navbar: true,
-      },
-      Portfolio: {
-        name: "Portfolio",
-        url: "https://adowise.in", // SAMPLE
-        icon: Icons.globe,
-        navbar: true,
-      },
-      email: {
-        name: "Send Email",
-        url: "mailto:reachmohdaltaf@gmail.com",
-        icon: Icons.email,
-        navbar: false,
-      },
-    },
+   social: {
+  GitHub: {
+    name: "GitHub",
+    url: "https://github.com/code-with-altaf",
+    icon: Icons.github,
+    navbar: true,
+  },
+  LinkedIn: {
+    name: "LinkedIn",
+    url: "https://linkedin.com/in/reachmohdaltaf",
+    icon: Icons.linkedin,
+    navbar: true,
+  },
+  X: {
+    name: "X",
+    url: "https://x.com/reachmohdaltaf",
+    icon: Icons.x,
+    navbar: true,
+  },
+  YouTube: {
+    name: "YouTube",
+    url: "https://www.youtube.com/@codewithaltaf",
+    icon: Icons.youtube,
+    navbar: true,
+  },
+  Portfolio: {
+    name: "Portfolio",
+    url: "https://adowise.in",
+    icon: Icons.globe,
+    navbar: true,
+  },
+  email: {
+    name: "Send Email",
+    url: "mailto:reachmohdaltaf@gmail.com",
+    icon: Icons.email,
+    navbar: false,
+  },
+},
+
   },
 
   // ---------------------------------------------------
@@ -277,4 +284,6 @@ projects: [
   //                   HACKATHONS (EMPTY)
   // ---------------------------------------------------
   hackathons: [],
+
+
 } as const;
