@@ -10,7 +10,8 @@ const nextConfig = {
       "blog-app-eta-ten.vercel.app",
       "briefly-kappa.vercel.app",
       "connectify-h8zy.onrender.com",
-      "yt3.googleusercontent.com"
+      "yt3.googleusercontent.com",
+      "via.placeholder.com"
     ]
   }
 };

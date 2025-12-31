@@ -163,8 +163,7 @@ projects: [
     description:
       "AI-powered PDF summarizer built using OpenAI API with modern UI and optimized file processing.",
     technologies: ["Next.js", "OpenAI API", "Tailwind", "Shadcn", "React Hook Form"],
-    logo:
-      "https://briefly-kappa.vercel.app/_next/image?url=%2Flogo.png&w=96&q=75",
+   
   },
 
   {
@@ -176,7 +175,7 @@ projects: [
     description:
       "Mentorship platform offering services, bookings, priority DMs, and secure role-based workflows.",
     technologies: ["React", "Express.js", "MongoDB", "Redux", "Tailwind", "Shadcn"],
-    logo: "https://via.placeholder.com/150?text=Adowise+Logo",
+  
   },
   {
   title: "Invozo",
@@ -187,7 +186,7 @@ projects: [
   description:
     "Create invoices in minutes, not hours. Simple, fast, and professional invoice generator built with clean UI and smooth workflows.",
   technologies: ["Next.js", "TypeScript", "Tailwind", "Shadcn", "Prisma"],
-  logo: "https://via.placeholder.com/150?text=Invozo+Logo"
+
 },
 {
   title: "Carelytics",
@@ -205,7 +204,7 @@ projects: [
     "Shadcn",
     "Recharts"
   ],
-  logo: "https://via.placeholder.com/150?text=Carelytics+Logo"
+  
 }
 ,
 
@@ -225,7 +224,7 @@ projects: [
       "Tailwind",
       "TanStack Query",
     ],
-    logo: "https://blog-app-eta-ten.vercel.app/logo.svg",
+   
   },
 
   {
@@ -244,7 +243,7 @@ projects: [
       "Tailwind",
       "Cloudinary",
     ],
-    logo: "https://connectify-h8zy.onrender.com/assets/logo-B9T138Ag.svg",
+   
   },
 
   {
@@ -256,7 +255,7 @@ projects: [
     description:
       "Job platform with smart search, company dashboards, role-based auth, and clean UI workflows.",
     technologies: ["Next.js", "MongoDB", "Prisma", "Redux", "Tailwind", "Shadcn"],
-    logo: "https://via.placeholder.com/150?text=JobGo+Logo",
+    
   },
   {
   title: "WryTit",
@@ -267,7 +266,7 @@ projects: [
   description:
     "A modern storytelling and blogging platform with a beautifully crafted UI. A space to explore ideas, express thoughts, and read meaningful stories with a clean, reader-focused experience.",
   technologies: ["Next.js", "Tailwind", "Shadcn", "React", "TypeScript"],
-  logo: "https://via.placeholder.com/150?text=WryTit+Logo"
+  
 }
 
 ],

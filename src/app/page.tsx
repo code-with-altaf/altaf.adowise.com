@@ -143,7 +143,7 @@ export default function Page() {
   description={project.description}
   dates={project.dates}
   tags={project.technologies}
-  image={project.logo}
+
   video={project.video}
 />
 
