@@ -52,13 +52,13 @@ export const DATA = {
   },
   LinkedIn: {
     name: "LinkedIn",
-    url: "https://linkedin.com/in/reachmohdaltaf",
+    url: "https://linkedin.com/in/codewithaltaf",
     icon: Icons.linkedin,
     navbar: true,
   },
   X: {
     name: "X",
-    url: "https://x.com/reachmohdaltaf",
+    url: "https://x.com/codewithaltaf",
     icon: Icons.x,
     navbar: true,
   },
