@@ -325,7 +325,7 @@ projects: [
     href: "#",
     dates: "2024",
     active: true,
-    video: "/connectify.mp4",
+    video: "/connectify.gif",
     description:
       "Social platform with posts, notifications, real-time updates, image uploads, and user profiles.",
     technologies: [
