@@ -66,6 +66,8 @@ export function ProjectCard({
           <img
             src={video?.endsWith(".gif") ? video : image}
             alt={title}
+            loading="eager"
+            fetchPriority="high"
             className="h-40 w-full overflow-hidden object-cover object-top"
             onError={(e) => {
               // Fallback to image if video/gif fails
@@ -81,6 +83,8 @@ export function ProjectCard({
               alt={title}
               width={500}
               height={300}
+              priority
+              loading="eager"
               className="h-40 w-full overflow-hidden object-cover object-top"
             />
           )
