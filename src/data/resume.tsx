@@ -5,7 +5,7 @@ export const DATA = {
   name: "Altaf",
   initials: "MA",
 
-  url: "https://your-portfolio.com", // SAMPLE
+  url: "https://mohammadaltaf.dev",
   location: "India",
   locationLink: "https://www.google.com/maps/place/India",
 
