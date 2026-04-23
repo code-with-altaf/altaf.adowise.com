@@ -137,16 +137,16 @@ export default function Page() {
                 key={project.title}
                 delay={BLUR_FADE_DELAY * 12 + id * 0.05}
               >
-  <ProjectCard
-  href={project.href}
-  key={project.title}
-  title={project.title}
-  description={project.description}
-  dates={project.dates}
-  tags={project.technologies}
-
-  video={project.video}
-/>
+                <ProjectCard
+                  href={project.href}
+                  key={project.title}
+                  title={project.title}
+                  description={project.description}
+                  dates={project.dates}
+                  tags={project.technologies}
+                  image={project.image}
+                  video={project.video}
+                />
 
 
               </BlurFade>
@@ -159,19 +159,31 @@ export default function Page() {
         <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 16}>
             <div className="space-y-3">
-              <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm">
-                Contact
-              </div>
+              <Link
+                href="https://calendly.com/reachmohdaltaf/30min"
+                target="_blank"
+              >
+                <div className="inline-block rounded-lg bg-foreground text-background px-3 py-1 text-sm cursor-pointer hover:opacity-80 transition-opacity">
+                  Contact
+                </div>
+              </Link>
               <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
                 Get in Touch
               </h2>
               <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Want to chat? Just shoot me a dm{" "}
+                Want to chat? Just shoot me a dm on{" "}
                 <Link
                   href={DATA.contact.social.X.url}
                   className="text-blue-500 hover:underline"
                 >
-                  with a direct question on twitter
+                  Twitter
+                </Link>{" "}
+                or{" "}
+                <Link
+                  href="https://calendly.com/reachmohdaltaf/30min"
+                  className="text-blue-500 hover:underline"
+                >
+                  book a meeting
                 </Link>{" "}
                 and I&apos;ll respond whenever I can. I will ignore all
                 soliciting.

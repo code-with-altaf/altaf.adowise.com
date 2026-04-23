@@ -33,6 +33,24 @@ export const DATA = {
     "GraphQL",
     "Zod",
     "WebSockets",
+    "TanStack Query",
+    "REST API",
+    "Framer Motion",
+    "Cloudinary",
+    "Recharts",
+    "OpenAI API",
+    "Figma",
+    "API Design Patterns",
+    "Database Design",
+    "Docker",
+    "CI/CD",
+    "AWS",
+    "Redis",
+    "CDN",
+    "Query Optimization",
+    "Auth (JWT/OAuth)",
+    "Payments (Stripe/Razorpay)",
+    "Architecture Design",
   ],
 
   navbar: [
@@ -68,17 +86,11 @@ export const DATA = {
     icon: Icons.youtube,
     navbar: true,
   },
-  Portfolio: {
-    name: "Portfolio",
-    url: "https://adowise.in",
-    icon: Icons.globe,
-    navbar: true,
-  },
   email: {
-    name: "Send Email",
-    url: "mailto:reachmohdaltaf@gmail.com",
+    name: "Contact",
+    url: "https://calendly.com/reachmohdaltaf/30min",
     icon: Icons.email,
-    navbar: false,
+    navbar: true,
   },
 },
 
@@ -119,10 +131,22 @@ export const DATA = {
       location: "Roorkee, India",
       title: "MERN Stack Developer",
       logoUrl: "/explorin.png", // You will replace
-      start: "September 2024",
-      end: "November 2024",
+      start: "June 2024",
+      end: "August 2024",
       description:
         "Worked on MERN applications, optimized database queries, improved API performance, and helped scale backend systems.",
+    },
+    {
+      company: "Scaptor",
+      href: "#",
+      badges: ["First Internship"],
+      location: "Remote",
+      title: "UI/UX Designer",
+      logoUrl: "/scaptor.png",
+      start: "2022",
+      end: "2023",
+      description:
+        "Designed user-centric interfaces and improved user experience for the Scaptor platform. Focused on clean aesthetics and intuitive navigation.",
     },
   ],
 
@@ -360,8 +384,7 @@ projects: [
     "A modern storytelling and blogging platform with a beautifully crafted UI. A space to explore ideas, express thoughts, and read meaningful stories with a clean, reader-focused experience.",
   technologies: ["Next.js", "Tailwind", "Shadcn", "React", "TypeScript"],
   
-}
-
+},
 ],
 
 

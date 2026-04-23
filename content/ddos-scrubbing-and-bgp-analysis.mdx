@@ -1,0 +1,47 @@
+---
+title: "Detecting and Characterizing DDoS Scrubbing from Global BGP Routing"
+publishedAt: "2026-04-23"
+summary: "A technical deep dive into how large-scale DDoS protection works at the network layer, using BGP routing data to analyze the behavior of global scrubbing services."
+image: "/blog/ddos-scrubbing-bgp.png"
+---
+
+Distributed Denial of Service (DDoS) attacks have grown in both frequency and scale, reaching multi-terabit peaks in 2026. To counter these threats, the industry has turned to **DDoS Scrubbing Services**. These services act as a massive "filter" for the Internet, absorbing malicious traffic before it ever reaches the victim's network.
+
+But how do these services actually work at the BGP (Border Gateway Protocol) level? By analyzing public BGP data, we can characterize the real-world behavior of major scrubbing providers and understand the mechanics of global traffic redirection.
+
+## The Mechanics of Redirection: BGP Hijacking for Good
+
+When a network comes under attack, it must divert its traffic through a scrubbing center. This is typically achieved using one of two BGP-based methods:
+
+### 1. BGP Anycast
+Scrubbing providers often use **Anycast**, where the same IP prefix is announced from multiple geographic locations simultaneously. When an attack begins, the victim's traffic is naturally routed to the nearest scrubbing node based on BGP's path selection logic. This provides low latency and massive distributed capacity.
+
+### 2. Prefix Advertisement
+In a more targeted approach, the scrubbing service will announce the victim's specific IP prefixes (/24 or shorter) to the global Internet. Because BGP prefers the "most specific" route, all traffic for those IPs will flow into the scrubbing service's network instead of the victim's.
+
+## Inside the Scrubbing Center: The Filtering Process
+
+Once the traffic arrives at a scrubbing node, it undergoes several layers of analysis:
+- **Stateless Filtering**: Dropping packets that don't match valid protocols or have malformed headers (e.g., UDP amplification attacks).
+- **Stateful Inspection**: Challenging connections (such as SYN cookies) to ensure they originate from a real TCP stack rather than a bot.
+- **Behavioral Analysis**: Using machine learning to identify anomalous traffic patterns that deviate from the "clean" traffic baseline.
+
+The "clean" traffic is then tunneled back to the victim's network—typically via GRE (Generic Routing Encapsulation) or a direct cross-connect—while the malicious traffic is "blackholed."
+
+## Analyzing Scrubbing Behavior via BGP Data
+
+By monitoring global BGP updates (via projects like RIPE RIS or Route Views), researchers can detect when a scrubbing event is occurring. Key indicators include:
+- **AS_PATH Prependings**: Scrubbing services may use path prepending to influence how traffic enters their network and ensure it reaches a specific node.
+- **Community Tags**: Many providers use BGP communities to signal specific routing intentions to their peers, such as "do not announce to certain regions" or "scrubbing active."
+- **Path Latency Spikes**: The redirection of traffic often adds "detour latency." Measuring the delta between the direct path and the scrubbed path provides insights into the geographic efficiency of the provider.
+
+## The Challenges of Modern Scrubbing
+
+Despite their power, scrubbing services face several challenges in 2026:
+- **IPv6 Adoption**: While IPv4 scrubbing is mature, many providers still struggle with the massive address space and different header structures of IPv6.
+- **Encrypted Attacks**: As more traffic moves to TLS 1.3, scrubbing services cannot inspect the payload, forcing them to rely almost entirely on behavioral and metadata-based detection.
+- **BGP Route Leaks**: The aggressive prefix announcements required for scrubbing can occasionally lead to global route leaks if not properly filtered, causing collateral damage to unrelated networks.
+
+## The Security Outlook
+
+DDoS scrubbing has moved from a "luxury" service for large enterprises to a fundamental requirement for anyone operating critical infrastructure. Understanding the BGP-level behavior of these services is essential for network engineers to ensure that their protection is not only effective but also stable and performant under the extreme stress of a modern attack.

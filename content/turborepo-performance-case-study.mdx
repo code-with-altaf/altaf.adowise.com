@@ -1,0 +1,49 @@
+---
+title: "How We Made Turborepo 96% Faster: A Case Study in Agent-Assisted Engineering"
+publishedAt: "2026-04-23"
+summary: "Time to First Task on a 1,000+ package monorepo dropped from 8.1 seconds to 716 milliseconds. Explore the mix of AI agents, Vercel Sandboxes, and profiling that made it possible."
+image: "/blog/turborepo-performance.png"
+---
+
+Turborepo is now 81-91% faster to compute its task graph in our repositories, scaling with repo size. On our largest 1,000+ package monorepo, `turbo run` now feels instant. After testing with open-source repositories and canary releases, the performance improvement reached as high as 96% in complex environments.
+
+This wasn't the result of a single optimization. It was eight days of mixing AI agents, Vercel Sandboxes, and standard engineering practices.
+
+## The Overhead of Task Scheduling
+
+Every `turbo run` starts by analyzing your monorepo's structure, scripts, and dependencies to build a task graph. This graph determines execution order, creates parallelism, and powers caching. Building this graph is overhead you pay before your repository's work even begins. On a 1,000-package monorepo, that cost was around 10 seconds—a bottleneck we found unacceptable.
+
+## Starting with Unattended Agents
+
+The first phase involved spinning up background coding agents targeting specific parts of the Rust codebase. While these agents produced some wins—such as reducing allocation pressure by hashing by reference and replacing hashing libraries with faster alternatives—they hit a ceiling.
+
+Unattended agents often hyperfixate on initial ideas, chase "big numbers" in microbenchmarks that don't translate to real-world performance, and fail to write regression tests or use profiling tools like `--profile`. To break through, we needed a stronger verification loop.
+
+## Building LLM-Friendly Profiles
+
+Standard profiling traces (Chrome Trace Event Format) are JSON files that are difficult for both humans and LLMs to parse efficiently. They contain split function identifiers and irrelevant metadata. One of the most effective heuristics for working with agents is: **if something is poorly designed for a human to work with, it's poorly designed for an agent.**
+
+We developed a Markdown-based profiling format. It outputs hot functions sorted by self-time, call trees, and caller/callee relationships on single lines. The difference in the agent's output quality was dramatic. With the profile data in a readable format, the optimization suggestions became radically more accurate.
+
+## The Iterative Optimization Loop
+
+We settled into a rhythm that produced over 20 performance PRs in four days. The wins fell into three main categories:
+
+### 1. Parallelization
+Building the git index, walking the filesystem for glob matches, and parsing lockfiles were previously sequential. Parallelizing these hot paths provided the largest gains.
+
+### 2. Allocation Elimination
+We removed redundant copies and clones throughout the pipeline. This included pre-compiling glob exclusion filters and using a shared HTTP client instead of constructing a new one per request.
+
+### 3. Syscall Reduction
+We batched per-package git subprocess calls into a single repo-wide index and replaced git subprocesses with faster library calls like `gix-index`.
+
+## Hitting the Wall at 85%
+
+As the code got faster, system noise (syscalls, memory, and disk I/O variance) became more significant. We couldn't distinguish a 2% improvement from random background activity on a local machine. We needed a "quieter lab."
+
+Vercel Sandboxes—ephemeral Linux containers—provided the solution. By running both the "main" and "branch" binaries in a single Sandbox instance, we could get clean signals. This led to low-level breakthroughs like stack-allocated git OIDs (reducing heap allocations by over 10,000 in large repos) and eliminating redundant `stat` syscalls in cache fetches.
+
+## The Codebase as a Feedback Loop
+
+The codebase itself served as the agent's strongest feedback mechanism. Once we corrected a sloppy pattern in one place, the agent followed the correction throughout the rest of the project. In future conversations, the agent would see the merged improvements and stop reproducing old patterns. Your own source code is effectively the best reinforcement learning environment available.

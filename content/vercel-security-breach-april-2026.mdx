@@ -1,0 +1,55 @@
+---
+title: "Vercel Security Breach April 2026: What Happened and What You Should Do"
+publishedAt: "2026-04-23"
+summary: "A third-party AI tool compromise led to unauthorized access to Vercel's internal systems. Here's the full breakdown, timeline, and steps every developer must take."
+image: "/blog/vercel-breach.png"
+---
+
+On April 19, 2026, Vercel disclosed a significant security incident that sent shockwaves through the developer community. The breach originated from a compromised third-party AI tool and resulted in unauthorized access to customer environment variables.
+
+## The Attack Timeline
+
+| Date | Event |
+|------|-------|
+| April 19 | Vercel publishes initial disclosure and first IOC |
+| April 20 | npm packages confirmed safe, MFA guidance added |
+| April 22 | Expanded investigation reveals additional compromised accounts |
+| April 23 | Further findings clarified, investigation ongoing |
+
+## How Did It Happen?
+
+The attack chain was sophisticated:
+
+1. **Context.ai Compromise**: An AI productivity tool called Context.ai was breached.
+2. **OAuth Token Theft**: The attacker used compromised OAuth credentials to hijack a Vercel employee's Google Workspace account.
+3. **Internal Access**: From the employee's Vercel account, the attacker pivoted into internal systems.
+4. **Data Exfiltration**: Non-sensitive environment variables were enumerated and decrypted.
+
+The attacker was described as "highly sophisticated" with deep knowledge of Vercel's API surface.
+
+## What Was Exposed?
+
+- **Non-sensitive environment variables** — API keys, tokens, database credentials, and signing keys stored in plaintext.
+- **No npm package tampering** — Vercel confirmed with GitHub, Microsoft, npm, and Socket that no published packages were compromised.
+
+## What Every Developer Should Do Right Now
+
+### Immediate Actions
+1. **Rotate all environment variables** that were not marked as "sensitive" in your Vercel dashboard.
+2. **Enable two-factor authentication** with an authenticator app or passkey.
+3. **Review your activity logs** for suspicious deployments or API calls.
+4. **Check for the compromised OAuth app**: `110671459871-30f1spbu0hptbs60cb4vsmv79i7bbvqj.apps.googleusercontent.com`
+
+### Long-Term Best Practices
+- Always use the **Sensitive Environment Variables** feature so secrets cannot be read after being set.
+- Set **Deployment Protection** to Standard at minimum.
+- Audit all third-party OAuth apps connected to your Google Workspace.
+- Never store production secrets in plaintext environment variables.
+
+## The Bigger Lesson: Third-Party AI Tool Risks
+
+This breach highlights a critical emerging threat vector — **AI tool supply chain attacks**. As developers adopt more AI-powered productivity tools, each OAuth connection becomes a potential entry point. The Context.ai compromise potentially affected hundreds of users across many organizations.
+
+## Conclusion
+
+The Vercel incident is a wake-up call for the entire industry. Security is only as strong as the weakest link in your toolchain. Audit your OAuth connections, rotate your secrets, and treat every third-party integration as a potential attack surface.

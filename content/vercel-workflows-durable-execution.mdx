@@ -1,0 +1,43 @@
+---
+title: "Vercel Workflows: A New Programming Model for Durable Execution"
+publishedAt: "2026-04-23"
+summary: "Vercel Workflows is now generally available — bringing durable, reliable, and observable long-running agents and backends to every developer."
+image: "/blog/vercel-workflows.png"
+---
+
+Building a prototype is easy. Shipping it to production with proper failure handling, retries, and observability is where things fall apart. Vercel Workflows, now generally available, solves this by making long-running, durable execution as simple as writing a regular function.
+
+## What is Vercel Workflows?
+
+Workflows eliminates the need for separate orchestration services. Instead of splitting your code across queues, workers, status tables, and retry logic, you write normal TypeScript (or Python) functions and let the SDK handle everything.
+
+Since its beta launch in October 2025, Workflows has processed over **100 million runs** and **500 million steps** across 1,500+ customers.
+
+## The Programming Model
+
+The API is elegantly simple — two directives:
+
+- `"use workflow"` marks a function as a workflow
+- `"use step"` isolates a unit of work with automatic retries, persistence, and observability
+
+Each step gets isolation, retries, persistence, and durable continuation automatically. Your code is the orchestrator — no separate system required.
+
+## Built for the Agentic Era
+
+Workflows was designed with AI agents in mind:
+
+- **Durable Agents**: Deep integration with AI SDK enables infinitely long-running agents that survive restarts and failures
+- **Durable Streams**: Persistent output streams that clients can reconnect to at any point — even after closing the browser
+- **Hooks & Sleep**: Workflows can suspend without compute costs, perfect for human-in-the-loop approvals and scheduled tasks
+- **50MB per step, 2GB per run**: Built for multimodal agents passing images, video, and large context
+
+## Real-World Impact
+
+Companies are already seeing massive results:
+- **Durable** runs hundreds of AI agents for 3 million small businesses
+- **Mux** powers video and AI pipelines with durable execution
+- **Flora** orchestrates 50+ image models with no queues or state machines
+
+## Conclusion
+
+Vercel Workflows represents a shift in how we think about backend development. Durability, reliability, and observability are no longer afterthoughts — they are built into the programming model itself.

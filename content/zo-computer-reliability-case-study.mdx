@@ -1,0 +1,44 @@
+---
+title: "Technical Case Study: How Zo Computer Improved AI Reliability 20x on Vercel"
+publishedAt: "2026-04-23"
+summary: "Discover how an 8-person team achieved a 99.93% chat success rate and cut P99 latency by 38% by switching to a unified AI infrastructure."
+image: "/blog/zo-computer-case-study.png"
+---
+
+Zo Computer is building a personal AI cloud—an always-on agent powered by your own servers and data. For an 8-person startup, the technical challenge was immense: users expect their personal AI to be as responsive and reliable as a text message from a friend. With millions of model calls daily, any failure in the infrastructure directly breaks the user experience.
+
+## The Challenge: Death by a Thousand Adapters
+
+Before moving to a unified infrastructure, Zo's backend had to talk to every major AI provider individually: OpenAI, Anthropic, MiniMax, GLM, Fireworks, and more. This led to several critical bottlenecks:
+- **Custom Adapter Code**: Every provider required bespoke code for image handling, key management, and edge cases.
+- **Maintenance Overhead**: Every time a provider released a new model, an engineer had to write a new adapter and run a full deployment cycle.
+- **Infrastructure Fragility**: The team was manually managing retries, provider routing, and fallback logic in their own codebase.
+
+Their baseline performance was a 98% success rate with a 7.5% retry rate. While 98% sounds high, it meant that 1 in 50 messages failed or required a slow retry, leading to tens of thousands of negative user experiences daily.
+
+## The Solution: Unified SDK and Gateway
+
+Zo migrated to a two-layer infrastructure using the **AI SDK** and **AI Gateway**. 
+
+1. **The AI SDK** replaced the custom adapter code. It provided a unified interface for every model, normalizing response formats and image support across providers. 
+2. **The AI Gateway** moved the infrastructure complexity—retries, health monitoring, and fallback routing—to the routing layer rather than the application code.
+
+## The Results: A 20x Improvement in Reliability
+
+During the transition, Zo ran a live A/B test in production, comparing their old non-Vercel routes with the new unified routes under identical conditions. The data was conclusive:
+
+- **Retry Rate**: Dropped from 7.5% to **0.34%** (a 20x improvement).
+- **Chat Success Rate**: Increased to **99.93%**.
+- **Average Attempts**: Hit **1.00**, meaning virtually every request succeeded on the first try without needing a fallback.
+
+### Latency Breakthroughs
+For a personal AI, latency is the most critical metric. A 2-minute wait for a response is unacceptable in a chat-like interface. On their most-used model (MiniMax M2.5), the results showed:
+- **Average Latency**: Improved by 25.7%.
+- **P95 Latency**: Dropped from 46s to 34s.
+- **P99 Latency**: Cut by 38%, dropping from 131s to just **81s**.
+
+## Scaling to One Million Users
+
+By moving to a unified AI infrastructure, the Zo team eliminated the need for "adapter maintenance." New model support shifted from an hour-long code change to a 30-second config update. This allowed their six engineers to focus entirely on product features rather than plumbing.
+
+The case study of Zo Computer proves that in the AI-first era, the "hidden" infrastructure—routing, retries, and normalization—is what determines the difference between a prototype and a production-grade personal cloud.
