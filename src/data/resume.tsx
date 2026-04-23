@@ -343,6 +343,23 @@ projects: [
     ],
    
   },
+  {
+    title: "BlueDrum AI",
+    href: "#",
+    dates: "February 2026",
+    active: true,
+    image: "/bluedrum.png",
+    description:
+      "AI-powered platform for legal documentation in family disputes. Helps organize evidence, analyze conversations, and export court-ready documents.",
+    technologies: [
+      "Next.js",
+      "AI SDK",
+      "PostgreSQL",
+      "Tailwind",
+      "LegalTech",
+    ],
+  },
+
 
   {
     title: "Connectify",
