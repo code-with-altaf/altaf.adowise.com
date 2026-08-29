@@ -23,15 +23,31 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(DATA.url),
   title: {
-    default: DATA.name,
-    template: `%s | ${DATA.name}`,
+    default: "Mohammad Altaf | Founder of adowise",
+    template: `%s | Mohammad Altaf | Founder of adowise`,
   },
   description: DATA.description,
+  keywords: [
+    "Best web developer in Paonta Sahib",
+    "Best developer in Paonta Sahib",
+    "Software developer Paonta Sahib",
+    "Web design Paonta Sahib",
+    "Paonta Sahib website developer",
+    "Adowise founder",
+    "Mohammad Altaf developer",
+    "Freelance web developer Paonta Sahib",
+    "Next.js developer India",
+    "Full stack developer Paonta Sahib",
+    "Unzora alternative",
+    "SNM Web developer alternative",
+    "Geometrical web alternative",
+    "DigiWorld India alternative"
+  ],
   openGraph: {
-    title: `${DATA.name}`,
+    title: "Mohammad Altaf | Founder of adowise",
     description: DATA.description,
     url: DATA.url,
-    siteName: `${DATA.name}`,
+    siteName: "Mohammad Altaf | Founder of adowise",
     locale: "en_US",
     type: "website",
   },
@@ -47,7 +63,7 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: `${DATA.name}`,
+    title: "Mohammad Altaf | Founder of adowise",
     card: "summary_large_image",
   },
   verification: {
@@ -61,8 +77,33 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mohammad Altaf",
+    "jobTitle": "Best Web Developer in Paonta Sahib",
+    "url": DATA.url,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Paonta Sahib",
+      "addressRegion": "Himachal Pradesh",
+      "addressCountry": "India"
+    },
+    "description": DATA.description,
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Adowise"
+    }
+  };
+
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased relative",
