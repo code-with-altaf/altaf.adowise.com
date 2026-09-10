@@ -20,7 +20,7 @@ export default function HackathonsSection() {
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Sharing Knowledge & Community</h2>
             <p className="text-muted-foreground md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed text-balance text-center">
               Throughout my journey, I've had the pleasure of attending and speaking at various events. It's been an incredible experience connecting with passionate individuals and sharing ideas that drive innovation.{" "}
-              <Link href="https://adowise-portfolio-git-main-reachmohdaltafs-projects.vercel.app/" className="font-bold underline text-foreground hover:text-primary transition-colors">
+              <Link href="https://adowise.mohammdaltaf.dev" className="font-bold underline text-foreground hover:text-primary transition-colors">
                 visit adowise labs
               </Link>
             </p>

@@ -14,7 +14,7 @@ export const DATA = {
   location: "India",
   locationLink: "https://www.google.com/maps/place/India",
   description:
-    "Recognized as the best web developer in Paonta Sahib. Founder & Builder focused on turning ideas into real products, businesses, and AI-powered tools.\n\nFounder of Adowise. Building in public.",
+    "Software Engineer and Builder focused on turning ideas into real products, businesses, and AI-powered tools.\n\nFounder of Adowise. Building in public.",
   summary:
     "I like [turning ideas into real products](#). After starting out [freelancing and building for clients](#), I shifted my focus to [building products of my own](#). This led me to build [Adowise](#) — a platform helping creators [turn their knowledge into a business](#). I enjoy working across [product, design, and growth](#) to take ideas from a blank page to [learning from real users](#). I'm particularly passionate about [AI, automation, and startups](#). I also believe in [building in public](#) by sharing my lessons and failures along the way. Currently building [Adowise](#) and documenting the journey.",
   avatarUrl: "https://avatars.githubusercontent.com/u/178491093?s=400&u=54809017fc5993a4448a1a1ecb1eb4dda2c315fa&v=4",
